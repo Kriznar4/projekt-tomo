@@ -226,6 +226,11 @@ msgstr "(trenutna)"
 msgid "Add new problem set"
 msgstr "Dodaj sklop"
 
+#. Translators: Tells students there is no problems yet in this course.
+#: web/templates/courses/course_detail.html:35
+msgid "This couse does not have any problems yet. Please wait for teacher to add some."
+msgstr "Ta sklop še nima nobenih problemov. Prosimo počakajte, da jih učitelj doda."
+
 #. Translators: Demote teacher to student - button
 #: web/templates/courses/course_detail.html:56
 msgid "Demote to student"

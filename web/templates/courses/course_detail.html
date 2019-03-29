@@ -23,9 +23,14 @@
     <div class="row">
       <div class="col-md-8">
         <ul class="list-group tomo-courses">
-          {% for problem_set in course.annotated_problem_sets %}
+        {% for problem_set in course.annotated_problem_sets %}
           {% include 'courses/_problem_set.html' %}
-          {% endfor %}
+        {% empty %}
+          {% if not show_teacher_forms %}
+            {# Translators: Tells students there is no problems yet in this course. #}
+            {% trans "This couse does not have any problems yet. Please wait for teacher to add some." %}
+          {% endif %}
+        {% endfor %}
         </ul>
         {% if show_teacher_forms %}
         <hr>
@@ -35,6 +40,7 @@
                      {% trans "Add new problem set" %}
             </button>
         {% endif %}
+        
       </div>
 
       <div class="col-md-4 tomo-course-info">
