@@ -144,6 +144,16 @@ class Problem(OrderWithRespectToMixin, models.Model):
             part.copy_to(new_problem)
         return new_problem
 
+    #premakni problem nekam 
+    #def move_to(self, problem_set):
+    #    new_problem = deepcopy(self)
+    #    new_problem.pk = None
+    #    new_problem.problem_set = problem_set
+    #    new_problem.save()
+    #    for part in self.parts.all():
+    #        part.copy_to(new_problem)
+    #    return new_problem
+
     def content_type(self):
         return self.MIMETYPES[self.language]
 
