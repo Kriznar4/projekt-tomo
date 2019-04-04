@@ -11,7 +11,6 @@ from utils import is_json_string_list, truncate
 from utils.models import OrderWithRespectToMixin
 from taggit.managers import TaggableManager
 from django.core import signing
-#komentar
 
 class Problem(OrderWithRespectToMixin, models.Model):
     title = models.CharField(max_length=70)
