@@ -146,13 +146,12 @@ class Problem(OrderWithRespectToMixin, models.Model):
 
     #premakni problem nekam #preveri ce je prav
     def move_to(self, problem_set):
-        # ne naredi kopije, ampak ga samo premakne
-        new_problem = self    
-        new_problem.pk = None
-        new_problem.problem_set = problem_set
-        new_problem.save()
-        for part in self.parts.all():
-            part.move_to(new_problem)
+        # ne naredi kopije, ampak ga samo premakne  
+        #self.pk = None
+        self.problem_set = problem_set
+        self.save()
+        #for part in self.parts.all():
+        #    part.move_to(new_problem)
         return new_problem
 
     def content_type(self):
@@ -226,11 +225,10 @@ class Part(OrderWithRespectToMixin, models.Model):
     
     #preveri ce je prav
     def move_to(self, problem):
-        part = self
-        part.pk = None
-        part.problem = problem
-        part.save()
-        return part
+        #self.pk = None
+        self.problem = problem
+        self.save()
+        return self
 
     def attempt_token(self, user):
         return signing.dumps({
