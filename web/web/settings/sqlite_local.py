@@ -33,3 +33,4 @@ NOSE_ARGS = [
     '--with-coverage',
     '--cover-package=problems,attempts,courses,users,utils',
 ]
+USE_TZ = False

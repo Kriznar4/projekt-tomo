@@ -139,7 +139,7 @@ def move_to_form(request, problem_pk):
     Show and react to MoveForm.
     """
     problem = Problem.objects.get(pk=problem_pk)
-    verify(request.user.can_view_problem(problem))
+    verify(request.user.can_edit_problem_set(problem.problem_set))
     if request.method == 'POST':
         form = MoveToProblemForm(request.POST)
         if form.is_valid():
@@ -152,7 +152,6 @@ def move_to_form(request, problem_pk):
             # TODO: handle errors
             response = HttpResponse("Please select a problem set.")
             return response
-        problem.move_to(problem_set)
     else:
         form = MoveToProblemForm()
         courses = request.user.taught_courses.all()

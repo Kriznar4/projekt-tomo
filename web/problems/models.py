@@ -152,7 +152,6 @@ class Problem(OrderWithRespectToMixin, models.Model):
         self.save()
         #for part in self.parts.all():
         #    part.move_to(new_problem)
-        return new_problem
 
     def content_type(self):
         return self.MIMETYPES[self.language]

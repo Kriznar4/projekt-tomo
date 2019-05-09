@@ -9,7 +9,7 @@
 	{# Translators: Text of move problem modal.#}
 	{% trans "Please choose a problem set to move this problem to:" %}
 	
-	<form action="{% url 'problem_move' problem.id %}"  method="post" id='move_problem_form'>
+	<form action="{% url 'problem_move_to' problem.id %}"  method="post" id='move_problem_form'>
 	    {% csrf_token %}
 		<input type="hidden" name="problem_set_id", id="problem_set_id">
 	    <div id='problem_list_tree'></div>
