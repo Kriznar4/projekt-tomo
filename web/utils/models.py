@@ -1,3 +1,4 @@
+from django.db import models
 class OrderWithRespectToMixin(object):
     def move(self, shift):
         parent_name = self._meta.order_with_respect_to.name
@@ -11,3 +12,7 @@ class OrderWithRespectToMixin(object):
         order.insert(new, order.pop(old))
         set_order(order)
         parent.save()
+
+class Institution(models.Model):
+    name = models.CharField(max_length = 140)
+
