@@ -13,6 +13,3 @@ class OrderWithRespectToMixin(object):
         set_order(order)
         parent.save()
 
-class Institution(models.Model):
-    name = models.CharField(max_length = 140)
-

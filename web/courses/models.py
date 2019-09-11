@@ -8,22 +8,25 @@ from taggit.managers import TaggableManager
 from attempts.models import Attempt, HistoricalAttempt
 from problems.models import Part
 from copy import deepcopy
+    
 
-
+class Institution(models.Model):
+    name = models.CharField(max_length = 140)
 
 class Course(models.Model):
     title = models.CharField(max_length=70)
     description = models.TextField(blank=True)
     students = models.ManyToManyField(User, blank=True, related_name='courses', through='StudentEnrollment')
     teachers = models.ManyToManyField(User, blank=True, related_name='taught_courses')
-    institution = models.CharField(max_length=140)
+    institution_id = models.ForeignKey(Institution, related_name='institution')
+    institution = models.ForeignKey(Institution, related_name='institution_id')
     tags = TaggableManager(blank=True)
 
     class Meta:
         ordering = ['institution', 'title']
 
     def __str__(self):
-        return '{} @{{{}}}'.format(self.title, self.institution)
+        return '{} @{{{}}}'.format(self.title)#, self.institution)
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
