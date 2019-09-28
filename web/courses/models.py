@@ -18,15 +18,14 @@ class Course(models.Model):
     description = models.TextField(blank=True)
     students = models.ManyToManyField(User, blank=True, related_name='courses', through='StudentEnrollment')
     teachers = models.ManyToManyField(User, blank=True, related_name='taught_courses')
-    institution_id = models.ForeignKey(Institution, related_name='institution')
-    institution = models.ForeignKey(Institution, related_name='institution_id')
+    institution = models.ForeignKey(Institution, related_name='institution')
     tags = TaggableManager(blank=True)
 
     class Meta:
         ordering = ['institution', 'title']
 
     def __str__(self):
-        return '{} @{{{}}}'.format(self.title)#, self.institution)
+        return '{} @{{{}}}'.format(self.title)#, self.institution.name)
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
