@@ -15,11 +15,9 @@ def transfer_institutions(apps, schema_editor):
     for course in Course.objects.all():
         all_institutions.add(course.institution_ime)
     for institution in all_institutions:
-        apply_institution = Institution(name = institution)
-        apply_institution.save()
-    for course in Course.objects.all():
-        for institution_ob in Institution.objects.all():
-            Course.objects.filter(institution_ime = institution_ob.name).update(institution = institution_ob)
+        Institution.objects.create(name=institution)
+    for institution_ob in Institution.objects.all():
+        Course.objects.filter(institution_ime=institution_ob.name).update(institution=institution_ob)
 
 class Migration(migrations.Migration):
 
